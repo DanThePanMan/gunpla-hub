@@ -1,0 +1,16 @@
+-set up schema (done)
+-set up auth
+-show all posts
+-post detail 
+-new post
+-user page
+(now it will be the same as the ejs app)
+
+-commenting and liking
+-following
+-show posts from who i followed
+-pfp
+-upload images
+
+(advanced stuff)
+-direct message
