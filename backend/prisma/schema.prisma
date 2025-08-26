@@ -68,8 +68,15 @@ model Comment {
   id Int @id @default(autoincrement())
   commenterId Int
   commenterUser User @relation("userCommented", fields: [commenterId], references: [userId])
-  postId Int
-  post Post @relation(fields: [postId], references: [id])
+  
+  // Can comment on either a post OR another comment, not both
+  postId Int?
+  post Post? @relation(fields: [postId], references: [id])
+  
+  parentCommentId Int?
+  parentComment Comment? @relation("CommentReplies", fields: [parentCommentId], references: [id])
+  replies Comment[] @relation("CommentReplies")
+  
   content String
   createdAt DateTime @default(now())
 }
