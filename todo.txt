@@ -1,5 +1,6 @@
 -set up schema (done)
--set up auth
+-set up router and make a login page (done)
+-set up auth (make login a component not the page)
 -show all posts
 -post detail 
 -new post
