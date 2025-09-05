@@ -7,6 +7,9 @@
 -make front end show message from validator
 -set up the jwt middleware for verifying protected routes 
 -make front end store the jwt token
+-make social login methods
+
+
 -show all posts
 -post detail 
 -new post
