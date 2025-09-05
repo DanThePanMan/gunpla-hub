@@ -1,7 +1,12 @@
 -set up schema (done)
 -set up router and make a login page (done)
- -test front and back end connection
--set up auth
+ -test front and back end connection (done)
+-create new user (done)
+-do input sanitization and normalization in server side(done) (not really, need one for each form)
+-Migrate to passport jwt
+-make front end show message from validator
+-set up the jwt middleware for verifying protected routes 
+-make front end store the jwt token
 -show all posts
 -post detail 
 -new post

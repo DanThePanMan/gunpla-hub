@@ -14,7 +14,7 @@ const Login = () => {
                 },
                 body: JSON.stringify({
                     email: email,
-                    password: password, //todo: make this use bcrypt
+                    password: password,
                 }),
             });
         } catch (error) {

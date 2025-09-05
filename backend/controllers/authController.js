@@ -5,7 +5,6 @@ const { prisma } = require("../utils/prismaClient");
 const { validationResult } = require("express-validator");
 async function loginPost(req, res) {
     try {
-        // Check validation results
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({
@@ -16,10 +15,7 @@ async function loginPost(req, res) {
 
         const creds = req.body;
 
-        // Normalize email input
         const normalizedEmail = creds.email.trim().toLowerCase();
-
-        // Find user with normalized email
         const user = await prisma.user.findUnique({
             where: {
                 email: normalizedEmail,
@@ -52,7 +48,7 @@ async function loginPost(req, res) {
             { id: user.userId, email: user.email },
             JWT_SECRET,
             {
-                expiresIn: "24h", // Extended for better UX
+                expiresIn: "24h",
             }
         );
 
@@ -71,22 +67,26 @@ async function loginPost(req, res) {
 }
 async function userPost(req, res) {
     try {
-        const creds = req.body;
-
-        // Normalize email input
-        const normalizedEmail = creds.email.trim().toLowerCase();
-
-        // Sanitize display name
-        const sanitizedUsername = creds.username.trim();
-
-        // the request only sends user and password, the confirm password section is done clinet side
-        if (!normalizedEmail || !creds.password || !sanitizedUsername) {
-            console.error("error: bad request, did not provide full login");
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
             return res.status(400).json({
                 success: false,
-                message: "Bad request",
+                errors: errors.array(),
             });
         }
+
+        const creds = req.body;
+
+        const normalizedEmail = creds.email;
+        const sanitizedUsername = creds.username;
+
+        if (!normalizedEmail || !creds.password || !sanitizedUsername) {
+            return res.status(400).json({
+                success: false,
+                message: "Bad request - missing required fields",
+            });
+        }
+
         const hashedPassword = await bcrypt.hash(creds.password, 10);
         const user = await prisma.user.create({
             data: {
