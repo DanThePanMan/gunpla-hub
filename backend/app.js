@@ -5,8 +5,6 @@ const app = express();
 // routers
 const authRouter = require("./routes/authRouter");
 
-const jwt = require("jsonwebtoken");
-
 // Middleware
 app.use(
     cors({
