@@ -1,4 +1,4 @@
-const Homepage = () => (
+const Welcome = () => (
     <div className="min-h-screen w-full flex flex-col justify-center items-center p-4 relative overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-purple-900/20"></div>
@@ -44,4 +44,4 @@ const Homepage = () => (
     </div>
 );
 
-export default Homepage;
+export default Welcome;

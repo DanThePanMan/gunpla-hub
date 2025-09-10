@@ -5,12 +5,12 @@ import "./index.css";
 
 //pages
 import Login from "./pages/Login.jsx";
-import Homepage from "./pages/Homepage.jsx";
+import Welcome from "./pages/Welcome.jsx";
 import SignUp from "./pages/SignUp.jsx";
 
 // router
 const router = createBrowserRouter([
-    { path: "/", element: <Homepage /> },
+    { path: "/", element: <Welcome /> },
     {
         path: "Login",
         element: <Login />,

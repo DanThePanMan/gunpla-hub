@@ -3,11 +3,11 @@
  -test front and back end connection (done)
 -create new user (done)
 -do input sanitization and normalization in server side(done) (not really, need one for each form)
--Migrate to passport jwt
--make front end show message from validator
+-make front end show message from validator (done)
+-finsih login page (only api call left)
 -set up the jwt middleware for verifying protected routes 
--make front end store the jwt token
--make social login methods
+-make front end store the jwt token with react context
+
 
 
 -show all posts

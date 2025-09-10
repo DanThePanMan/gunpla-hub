@@ -5,6 +5,7 @@ const { prisma } = require("../utils/prismaClient");
 const { validationResult } = require("express-validator");
 
 async function loginPost(req, res) {
+    // all the logic to sanitize, normalize and verify result
     try {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -13,10 +14,10 @@ async function loginPost(req, res) {
                 errors: errors.array(),
             });
         }
-
         const creds = req.body;
-
         const normalizedEmail = creds.email.trim().toLowerCase();
+
+        // find user in db
         const user = await prisma.user.findUnique({
             where: {
                 email: normalizedEmail,
@@ -30,7 +31,7 @@ async function loginPost(req, res) {
             });
         }
 
-        // Verify password
+        // Verify creds
         const isPasswordValid = await bcrypt.compare(
             creds.password,
             user.password
@@ -42,6 +43,8 @@ async function loginPost(req, res) {
                 message: "Invalid email or password",
             });
         }
+
+        // all the jwt nonsence
         if (!process.env.JWT_SECRET) throw new Error("JWT_SECRET not set");
         const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -74,8 +77,7 @@ async function userPost(req, res) {
     //   "password": "string (required) - user's password"
     // }
     try {
-        console.log("Request body:", req.body);
-
+        // all the sanitization normalization and such
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             console.log("Validation errors:", errors.array());
@@ -84,9 +86,7 @@ async function userPost(req, res) {
                 errors: errors.array(),
             });
         }
-
         const creds = req.body;
-
         const normalizedEmail = creds.email;
         const sanitizedUsername = creds.username;
 
@@ -97,6 +97,7 @@ async function userPost(req, res) {
             });
         }
 
+        // bcrypt the password and post user
         const hashedPassword = await bcrypt.hash(creds.password, 10);
         const user = await prisma.user.create({
             data: {
@@ -105,14 +106,14 @@ async function userPost(req, res) {
                 password: hashedPassword,
             },
             select: {
-                userId: true, // Fixed: use userId instead of id
+                userId: true,
                 email: true,
                 displayName: true,
                 createdAt: true,
             },
         });
 
-        // Generate JWT token for immediate login after registration
+        // all the jwt nonsence
         if (!process.env.JWT_SECRET) throw new Error("JWT_SECRET not set");
         const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -124,7 +125,6 @@ async function userPost(req, res) {
             }
         );
 
-        console.log("User created successfully:", user.userId);
         return res.status(201).json({
             success: true,
             message: "Sign-up successful",
@@ -132,6 +132,7 @@ async function userPost(req, res) {
             token: token,
         });
     } catch (error) {
+        // if user already exists
         if (error.code === "P2002") {
             return res.status(400).json({
                 success: false,
