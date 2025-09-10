@@ -1,7 +1,69 @@
 @import "tailwindcss";
 
+:root {
+    /* Brand colors - update these based on your logo colors */
+    --primary: #1e40af; /* blue-800 - adjust to match your logo */
+    --primary-dark: #1e3a8a; /* blue-900 */
+    --accent: #dc2626; /* red-600 - adjust to match your logo */
+    --accent-light: #ef4444; /* red-500 */
+    --bg-primary: #0f172a; /* slate-900 */
+    --bg-secondary: #1e293b; /* slate-800 */
+    --bg-card: #334155; /* slate-700 */
+    --text-primary: #f1f5f9; /* slate-100 */
+    --text-secondary: #cbd5e1; /* slate-300 */
+    --border: #475569; /* slate-600 */
+    --border-light: #64748b; /* slate-500 */
+}
+
 body {
-    background-color: oklch(20.8% 0.042 265.755);
+    background: linear-gradient(
+        135deg,
+        var(--bg-primary) 0%,
+        var(--bg-secondary) 100%
+    );
     font-family: "Inter", system-ui, sans-serif;
-    color: rgb(254 243 199); /* amber-100 */
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+/* Logo styling */
+.logo {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-large {
+    height: 64px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Custom form styling to complement Tailwind */
+.form-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3),
+        0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.input-field {
+    background: var(--bg-secondary);
+    border-color: var(--border);
+    color: var(--text-primary);
+}
+
+.input-field:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+}
+
+.btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
 }

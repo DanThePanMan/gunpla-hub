@@ -69,7 +69,7 @@ const registerValidator = [
                 "welcome",
                 "12345678",
             ];
-            if (commonPasswords.includes(value.toLowerCase())) {
+            if (value && commonPasswords.includes(value.toLowerCase())) {
                 throw new Error("Password is too common");
             }
             return true;

@@ -3,6 +3,7 @@ require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const { prisma } = require("../utils/prismaClient");
 const { validationResult } = require("express-validator");
+
 async function loginPost(req, res) {
     try {
         const errors = validationResult(req);
@@ -66,9 +67,18 @@ async function loginPost(req, res) {
     }
 }
 async function userPost(req, res) {
+    // Expected request body format:
+    // {
+    //   "username": "string (required) - user's display name",
+    //   "email": "string (required) - user's email address",
+    //   "password": "string (required) - user's password"
+    // }
     try {
+        console.log("Request body:", req.body);
+
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
+            console.log("Validation errors:", errors.array());
             return res.status(400).json({
                 success: false,
                 errors: errors.array(),
@@ -114,11 +124,12 @@ async function userPost(req, res) {
             }
         );
 
+        console.log("User created successfully:", user.userId);
         return res.status(201).json({
             success: true,
             message: "Sign-up successful",
             user: user,
-            token: token, // Now returns actual JWT token
+            token: token,
         });
     } catch (error) {
         if (error.code === "P2002") {
