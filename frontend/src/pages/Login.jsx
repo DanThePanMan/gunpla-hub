@@ -1,22 +1,37 @@
 import { useState } from "react";
 import LoginSection from "../components/Login/LoginSection";
+import { useContext } from "react";
+import JWTContext from "../contexts/jwtContext";
 
 const Login = () => {
+    const { setToken, setUser } = useContext(JWTContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
 
     async function submitLogin() {
         try {
-            fetch(`${process.env.REACT_APP_API_URL}/auth/login`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    email: email,
-                    password: password,
-                }),
-            });
+            const response = await fetch(
+                `${import.meta.env.VITE_API_URL}/auth/token`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: password,
+                    }),
+                }
+            );
+
+            const data = await response.json();
+            if (response.ok) {
+                setToken(data.token);
+                setUser(data.user);
+            } else {
+                setMessage("Login failed, please verify your credentials");
+            }
         } catch (error) {
             console.log(error);
         }
@@ -32,6 +47,7 @@ const Login = () => {
             {/* Main content */}
             <div className="relative z-10">
                 <LoginSection
+                    message={message}
                     email={email}
                     setEmail={setEmail}
                     password={password}

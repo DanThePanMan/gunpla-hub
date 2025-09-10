@@ -1,7 +1,8 @@
 import React from "react";
 
 const LoginSection = (props) => {
-    const { email, setEmail, password, setPassword, submitLogin } = props;
+    const { message, email, setEmail, password, setPassword, submitLogin } =
+        props;
 
     return (
         <>
@@ -22,6 +23,7 @@ const LoginSection = (props) => {
 
             {/* Login Form */}
             <form className="form-card p-8 rounded-xl shadow-2xl w-96 backdrop-blur-sm">
+                <p className="text-red-400 font-bold">{message}</p>
                 <div className="mb-6">
                     <label
                         htmlFor="email"

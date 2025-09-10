@@ -6,8 +6,23 @@
 -make front end show message from validator (done)
 -finsih login page (only api call left)
 -set up the jwt middleware (done)
--make front end store the jwt token with react context
+-make front end store the jwt token with react context (done)
 
+
+here is how to set context value
+import React, { useContext } from 'react';
+import MyContext from './MyContext';
+
+const MyComponent = () => {
+  const sharedValue = useContext(MyContext);
+
+  return <p>{sharedValue}</p>;
+};
+
+export default MyComponent;
+
+
+- now look at login, do the same with sign up and make them redirect to home
 
 
 -show all posts
@@ -24,3 +39,5 @@
 
 (advanced stuff)
 -direct message
+
+

@@ -6,7 +6,7 @@ const {
 } = require("../middleware/loginValidator");
 const authRouter = Router();
 
-authRouter.post("/login", loginValidator, authController.loginPost);
+authRouter.post("/token", loginValidator, authController.loginPost);
 
 authRouter.post("/User", registerValidator, authController.userPost);
 
