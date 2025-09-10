@@ -5,7 +5,7 @@
 -do input sanitization and normalization in server side(done) (not really, need one for each form)
 -make front end show message from validator (done)
 -finsih login page (only api call left)
--set up the jwt middleware for verifying protected routes 
+-set up the jwt middleware (done)
 -make front end store the jwt token with react context
 
 
