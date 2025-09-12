@@ -24,7 +24,7 @@ export default MyComponent;
 
 - now look at login, do the same with sign up and make them redirect to home
 
-
+- finish the post get and post routes, then do params for when you want a specific users' posts. 
 -show all posts
 -post detail 
 -new post
