@@ -8,12 +8,12 @@ const authRouter = require("./routes/authRouter");
 // Middleware
 app.use(
     cors({
-        origin: "http://localhost:5173", // Frontend URL
+        origin: process.env.FRONTEND_URL,
         credentials: true,
     })
 );
-app.use(express.json()); // Parse JSON request bodies
-app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/auth", authRouter);

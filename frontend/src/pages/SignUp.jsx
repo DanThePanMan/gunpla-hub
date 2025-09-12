@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useContext } from "react";
+import JWTContext from "../contexts/jwtContext";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
     const [formData, setFormData] = useState({
@@ -8,6 +11,8 @@ const SignUp = () => {
         confirmPassword: "",
     });
     const [errors, setErrors] = useState({});
+    const { setToken, setUser } = useContext(JWTContext);
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -79,6 +84,7 @@ const SignUp = () => {
                         }),
                     }
                 );
+                const data = await response.json();
 
                 if (!response.ok) {
                     const errorData = await response.json();
@@ -90,6 +96,10 @@ const SignUp = () => {
                         setErrors(newErrors);
                     }
                     return;
+                } else {
+                    setToken(data.token);
+                    setUser(data.user);
+                    navigate("/home");
                 }
             } catch (error) {
                 console.error("Network error:", error);
