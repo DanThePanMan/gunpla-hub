@@ -148,6 +148,7 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
                 }
 
                 onClose();
+                window.location.reload(false);
             } else {
                 if (data.errors) {
                     const validationErrors = {};

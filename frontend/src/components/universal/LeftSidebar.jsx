@@ -31,7 +31,9 @@ const LeftSidebar = ({ samplePosts }) => {
                     {user ? (
                         <div className="flex items-center justify-between">
                             <div className="flex items-center space-x-3">
-                                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                                <div
+                                    className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm"
+                                    style={{ background: "var(--primary)" }}>
                                     {user.displayName
                                         ?.charAt(0)
                                         .toUpperCase() ||
@@ -51,7 +53,7 @@ const LeftSidebar = ({ samplePosts }) => {
                             </div>
                             <button
                                 onClick={handleLogout}
-                                className="text-slate-400 hover:text-red-400 transition duration-200 text-xs">
+                                className="text-slate-400 hover:text-red-400 text-xs">
                                 Logout
                             </button>
                         </div>
@@ -76,11 +78,15 @@ const LeftSidebar = ({ samplePosts }) => {
                     </h3>
 
                     {/* New Post Button */}
-                    <button
-                        onClick={() => setIsNewPostModalOpen(true)}
-                        className="btn-primary w-full mb-3 py-2 rounded text-sm">
-                        New Post
-                    </button>
+                    {user ? (
+                        <button
+                            onClick={() => setIsNewPostModalOpen(true)}
+                            className="btn-primary w-full mb-3 py-2 rounded text-sm">
+                            New Post
+                        </button>
+                    ) : (
+                        <></>
+                    )}
 
                     <nav className="space-y-2">
                         <a

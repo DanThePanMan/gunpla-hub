@@ -29,9 +29,9 @@ const Feed = ({ posts, loading }) => {
     if (!posts || posts.length === 0) {
         return (
             <div className="py-8 text-center">
-                <div className="bg-slate-800 rounded p-6 border border-slate-700">
+                <div className="bg-slate-800 rounded p-6 nu-border psycho-frame-glow">
                     <svg
-                        className="w-12 h-12 text-slate-500 mx-auto mb-4"
+                        className="w-12 h-12 nu-accent mx-auto mb-4"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24">
@@ -43,7 +43,7 @@ const Feed = ({ posts, loading }) => {
                         />
                     </svg>
                     <h3 className="text-lg font-semibold text-slate-200 mb-2">
-                        No posts yet
+                        <span className="nu-accent">◆</span> No posts yet
                     </h3>
                     <p className="text-slate-400 mb-4">
                         Be the first to share your Gunpla builds with the

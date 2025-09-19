@@ -22,7 +22,9 @@ const PostCard = ({ post }) => {
         <div className="form-card p-4 rounded border">
             {/* Post Header */}
             <div className="flex items-center mb-3">
-                <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold">
+                <div
+                    className="w-10 h-10 rounded-full flex items-center justify-center text-white font-semibold"
+                    style={{ background: "var(--primary)" }}>
                     {post.author.displayName.charAt(0).toUpperCase()}
                 </div>
                 <div className="ml-3">

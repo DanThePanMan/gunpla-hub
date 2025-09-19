@@ -13,7 +13,7 @@ const LoginSection = (props) => {
                     alt="Gunpla Hub Logo"
                     className="logo-large mx-auto mb-4"
                 />
-                <div className="font-extrabold text-3xl text-slate-100">
+                <div className="font-semibold text-2xl text-slate-100">
                     Log in to Gunpla Hub
                 </div>
                 <p className="text-slate-400 mt-2">
