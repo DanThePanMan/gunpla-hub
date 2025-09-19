@@ -33,6 +33,7 @@ function verifyToken(req, res, next) {
         return res.status(403).json({
             success: false,
             message: "403 Forbidden: Invalid or expired token",
+            error: error,
         });
     }
 }

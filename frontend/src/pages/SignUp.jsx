@@ -112,12 +112,7 @@ const SignUp = () => {
     };
 
     return (
-        <div className="min-h-screen w-full flex flex-col justify-center items-center p-2 relative overflow-hidden">
-            {/* Background decorative elements */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-purple-900/20"></div>
-            <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
-
+        <div className="min-h-screen w-full flex flex-col justify-center items-center p-4">
             {/* Main content */}
             <div className="relative z-10 w-full max-w-lg">
                 {/* Logo and Branding - Compact */}
@@ -138,7 +133,7 @@ const SignUp = () => {
                 {/* Sign Up Form - Compact */}
                 <form
                     onSubmit={handleSubmit}
-                    className="form-card p-6 rounded-xl shadow-2xl backdrop-blur-sm">
+                    className="form-card p-4 rounded border">
                     {/* Form Fields in Grid Layout */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
                         {/* Username Field */}
@@ -250,7 +245,7 @@ const SignUp = () => {
                     {/* Submit Button */}
                     <button
                         type="submit"
-                        className="btn-primary w-full py-3 px-4 rounded-lg font-semibold text-white hover:shadow-lg transform hover:scale-[1.02] transition duration-200">
+                        className="btn-primary w-full py-2 px-4 rounded font-medium text-white">
                         Create Account
                     </button>
 

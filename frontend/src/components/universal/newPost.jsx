@@ -193,21 +193,21 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
             {/* Backdrop */}
             <div
-                className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+                className="absolute inset-0 bg-black/60"
                 onClick={handleClose}></div>
 
             {/* Modal */}
             <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-                <div className="form-card p-8 rounded-xl shadow-2xl backdrop-blur-sm">
+                <div className="form-card p-6 rounded border">
                     {/* Header */}
-                    <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-2xl font-bold text-slate-100">
+                    <div className="flex items-center justify-between mb-4">
+                        <h2 className="text-xl font-semibold text-slate-100">
                             Create New Post
                         </h2>
                         <button
                             onClick={handleClose}
                             disabled={isSubmitting}
-                            className="text-slate-400 hover:text-slate-200 transition duration-200 disabled:opacity-50">
+                            className="text-slate-400 hover:text-slate-200 disabled:opacity-50">
                             <svg
                                 className="w-6 h-6"
                                 fill="none"
@@ -224,10 +224,10 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
                     </div>
 
                     {/* Form */}
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-4">
                         {/* General Error */}
                         {errors.general && (
-                            <div className="bg-red-500/20 border border-red-500/50 text-red-200 px-4 py-3 rounded-lg">
+                            <div className="bg-red-500/20 border border-red-500/50 text-red-200 px-4 py-3 rounded">
                                 {errors.general}
                             </div>
                         )}
@@ -246,10 +246,8 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
                                 value={formData.title}
                                 onChange={handleInputChange}
                                 disabled={isSubmitting}
-                                className={`input-field w-full px-4 py-3 rounded-lg transition duration-200 disabled:opacity-50 ${
-                                    errors.title
-                                        ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                                        : ""
+                                className={`input-field w-full px-3 py-2 rounded disabled:opacity-50 ${
+                                    errors.title ? "border-red-500" : ""
                                 }`}
                                 placeholder="What's your build about?"
                                 maxLength={200}
@@ -275,10 +273,8 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
                                 onChange={handleInputChange}
                                 disabled={isSubmitting}
                                 rows={4}
-                                className={`input-field w-full px-4 py-3 rounded-lg transition duration-200 disabled:opacity-50 resize-none ${
-                                    errors.content
-                                        ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                                        : ""
+                                className={`input-field w-full px-3 py-2 rounded disabled:opacity-50 resize-none ${
+                                    errors.content ? "border-red-500" : ""
                                 }`}
                                 placeholder="Share details about your build, techniques used, or your experience..."
                                 maxLength={5000}
@@ -313,8 +309,8 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
 
                         {/* Build Details */}
                         {formData.includeBuild && (
-                            <div className="bg-slate-700/30 p-6 rounded-lg border border-slate-600 space-y-4">
-                                <h3 className="text-lg font-semibold text-slate-200 mb-4">
+                            <div className="bg-slate-700 p-4 rounded border border-slate-600 space-y-3">
+                                <h3 className="text-lg font-semibold text-slate-200 mb-3">
                                     Build Details
                                 </h3>
 
@@ -427,18 +423,18 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
                         )}
 
                         {/* Buttons */}
-                        <div className="flex justify-end space-x-4 pt-6 border-t border-slate-600">
+                        <div className="flex justify-end space-x-3 pt-4 border-t border-slate-600">
                             <button
                                 type="button"
                                 onClick={handleClose}
                                 disabled={isSubmitting}
-                                className="px-6 py-3 text-slate-300 hover:text-slate-100 transition duration-200 disabled:opacity-50">
+                                className="px-4 py-2 text-slate-300 hover:text-slate-100 disabled:opacity-50">
                                 Cancel
                             </button>
                             <button
                                 type="submit"
                                 disabled={isSubmitting || !user}
-                                className="btn-primary px-6 py-3 rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed">
+                                className="btn-primary px-4 py-2 rounded disabled:opacity-50 disabled:cursor-not-allowed">
                                 {isSubmitting ? (
                                     <div className="flex items-center gap-2">
                                         <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>

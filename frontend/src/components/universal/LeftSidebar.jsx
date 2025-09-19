@@ -13,10 +13,10 @@ const LeftSidebar = ({ samplePosts }) => {
 
     return (
         <div className="hidden lg:block lg:w-64 xl:w-80 flex-shrink-0">
-            <div className="sticky top-6 space-y-6 h-fit">
+            <div className="sticky top-4 space-y-4 h-fit">
                 {/* Logo & User Profile */}
-                <div className="form-card p-6 rounded-xl shadow-lg backdrop-blur-sm">
-                    <div className="flex items-center space-x-3 mb-6">
+                <div className="form-card p-4 rounded border">
+                    <div className="flex items-center space-x-3 mb-4">
                         <img
                             src="/image.png"
                             alt="Gunpla Hub Logo"
@@ -62,7 +62,7 @@ const LeftSidebar = ({ samplePosts }) => {
                             </div>
                             <a
                                 href="/login"
-                                className="btn-primary px-4 py-2 rounded-lg text-sm">
+                                className="btn-primary w-full py-2 rounded text-sm text-center block">
                                 Login
                             </a>
                         </div>
@@ -70,22 +70,22 @@ const LeftSidebar = ({ samplePosts }) => {
                 </div>
 
                 {/* Navigation Menu */}
-                <div className="form-card p-6 rounded-xl shadow-lg backdrop-blur-sm">
-                    <h2 className="text-slate-200 font-bold text-lg mb-4">
+                <div className="form-card p-4 rounded border">
+                    <h3 className="text-slate-200 font-semibold mb-3">
                         Navigation
-                    </h2>
+                    </h3>
 
                     {/* New Post Button */}
                     <button
                         onClick={() => setIsNewPostModalOpen(true)}
-                        className="btn-primary w-full mb-4 py-3 rounded-lg font-medium text-sm">
+                        className="btn-primary w-full mb-3 py-2 rounded text-sm">
                         New Post
                     </button>
 
-                    <nav className="space-y-3">
+                    <nav className="space-y-2">
                         <a
                             href="#"
-                            className="flex items-center space-x-3 text-slate-300 hover:text-white transition duration-200 p-2 rounded-lg hover:bg-slate-700/30">
+                            className="flex items-center space-x-3 text-slate-300 hover:text-white p-2 rounded hover:bg-slate-700">
                             <svg
                                 className="w-5 h-5"
                                 fill="currentColor"
@@ -149,11 +149,11 @@ const LeftSidebar = ({ samplePosts }) => {
                 </div>
 
                 {/* Quick Stats */}
-                <div className="form-card p-6 rounded-xl shadow-lg backdrop-blur-sm">
-                    <h3 className="text-slate-200 font-semibold mb-4">
+                <div className="form-card p-4 rounded border">
+                    <h3 className="text-slate-200 font-semibold mb-3">
                         Community Stats
                     </h3>
-                    <div className="space-y-3">
+                    <div className="space-y-2">
                         <div className="flex justify-between">
                             <span className="text-slate-400">Builds</span>
                             <span className="text-blue-400 font-semibold">

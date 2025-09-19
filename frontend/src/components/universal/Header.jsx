@@ -48,7 +48,7 @@ const Header = () => {
                     <div className="flex items-center space-x-4">
                         {token ? (
                             <>
-                                <button className="btn-primary px-4 py-2 rounded-lg font-medium text-sm">
+                                <button className="btn-primary px-4 py-2 rounded font-medium text-sm">
                                     New Post
                                 </button>
                                 <div className="flex items-center space-x-3">
@@ -73,7 +73,7 @@ const Header = () => {
                                 </a>
                                 <a
                                     href="/signup"
-                                    className="btn-primary px-4 py-2 rounded-lg font-medium text-sm">
+                                    className="btn-primary px-4 py-2 rounded font-medium text-sm">
                                     Join
                                 </a>
                             </div>

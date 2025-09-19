@@ -19,10 +19,10 @@ const PostCard = ({ post }) => {
     };
 
     return (
-        <div className="form-card p-6 rounded-xl shadow-lg backdrop-blur-sm">
+        <div className="form-card p-4 rounded border">
             {/* Post Header */}
-            <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+            <div className="flex items-center mb-3">
+                <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold">
                     {post.author.displayName.charAt(0).toUpperCase()}
                 </div>
                 <div className="ml-3">
@@ -36,16 +36,16 @@ const PostCard = ({ post }) => {
             </div>
 
             {/* Post Content */}
-            <div className="mb-4">
-                <h2 className="text-xl font-bold text-slate-100 mb-2">
+            <div className="mb-3">
+                <h2 className="text-lg font-semibold text-slate-100 mb-2">
                     {post.title}
                 </h2>
-                <p className="text-slate-300 leading-relaxed">{post.content}</p>
+                <p className="text-slate-300">{post.content}</p>
             </div>
 
             {/* Build Info (if exists) */}
             {post.build && (
-                <div className="bg-slate-700/50 rounded-lg p-4 mb-4 border border-slate-600">
+                <div className="bg-slate-700 rounded p-3 mb-3 border border-slate-600">
                     <div className="flex items-center mb-2">
                         <svg
                             className="w-5 h-5 text-blue-400 mr-2"
@@ -99,7 +99,7 @@ const PostCard = ({ post }) => {
                 <div className="flex items-center space-x-6">
                     <button
                         onClick={handleLike}
-                        className={`flex items-center space-x-2 transition duration-200 ${
+                        className={`flex items-center space-x-2 ${
                             liked
                                 ? "text-red-400"
                                 : "text-slate-400 hover:text-red-400"

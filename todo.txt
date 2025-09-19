@@ -9,28 +9,21 @@
 -make front end store the jwt token with react context (done)
 
 
-here is how to set context value
-import React, { useContext } from 'react';
-import MyContext from './MyContext';
-
-const MyComponent = () => {
-  const sharedValue = useContext(MyContext);
-
-  return <p>{sharedValue}</p>;
-};
-
-export default MyComponent;
-
-
 - now look at login, do the same with sign up and make them redirect to home (done)
 -new post(done)
 
 - finish the post get and post routes, then do params for when you want a specific users' posts. 
--show all posts(route done, now i need to make it fetch on themain page"
-
-
+-show all posts(route done, now i need to make it fetch on themain page")(done)
 
 -post detail 
+    1. add post to react router
+    1.5. make all posts clickable ot navigate to that link
+    2. test out parameterized inputs
+    3. write route for individual post content and make sure it actually gets the right post
+    4. implement all post funcitonalities including share
+
+
+-pics
 
 -user page
 (now it will be the same as the ejs app)

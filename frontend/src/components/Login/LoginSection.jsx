@@ -22,9 +22,9 @@ const LoginSection = (props) => {
             </div>
 
             {/* Login Form */}
-            <form className="form-card p-8 rounded-xl shadow-2xl w-96 backdrop-blur-sm">
-                <p className="text-red-400 font-bold">{message}</p>
-                <div className="mb-6">
+            <form className="form-card p-6 rounded border w-96">
+                <p className="text-red-400 font-semibold">{message}</p>
+                <div className="mb-4">
                     <label
                         htmlFor="email"
                         className="block text-sm font-medium mb-2 text-slate-200">
@@ -35,13 +35,13 @@ const LoginSection = (props) => {
                         id="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="input-field w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+                        className="input-field w-full px-3 py-2 border rounded"
                         placeholder="Enter your email"
                         required
                     />
                 </div>
 
-                <div className="mb-6">
+                <div className="mb-4">
                     <label
                         htmlFor="password"
                         className="block text-sm font-medium mb-2 text-slate-200">
@@ -52,7 +52,7 @@ const LoginSection = (props) => {
                         id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="input-field w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+                        className="input-field w-full px-3 py-2 border rounded"
                         placeholder="Enter your password"
                         required
                     />
@@ -64,7 +64,7 @@ const LoginSection = (props) => {
                         submitLogin();
                     }}
                     type="submit"
-                    className="btn-primary w-full py-3 px-4 rounded-lg font-semibold text-white hover:shadow-lg transform hover:scale-[1.02] transition duration-200">
+                    className="btn-primary w-full py-2 px-4 rounded font-medium text-white">
                     Log in
                 </button>
 
