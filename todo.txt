@@ -22,12 +22,16 @@ const MyComponent = () => {
 export default MyComponent;
 
 
-- now look at login, do the same with sign up and make them redirect to home
+- now look at login, do the same with sign up and make them redirect to home (done)
+-new post(done)
 
 - finish the post get and post routes, then do params for when you want a specific users' posts. 
--show all posts
+-show all posts(route done, now i need to make it fetch on themain page"
+
+
+
 -post detail 
--new post
+
 -user page
 (now it will be the same as the ejs app)
 

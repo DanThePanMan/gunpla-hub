@@ -1,8 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import JWTContext from "../../contexts/jwtContext";
+import NewPostModal from "./newPost";
 
 const LeftSidebar = ({ samplePosts }) => {
     const { user, setToken, setUser } = useContext(JWTContext);
+    const [isNewPostModalOpen, setIsNewPostModalOpen] = useState(false);
 
     const handleLogout = () => {
         setToken(null);
@@ -74,7 +76,9 @@ const LeftSidebar = ({ samplePosts }) => {
                     </h2>
 
                     {/* New Post Button */}
-                    <button className="btn-primary w-full mb-4 py-3 rounded-lg font-medium text-sm">
+                    <button
+                        onClick={() => setIsNewPostModalOpen(true)}
+                        className="btn-primary w-full mb-4 py-3 rounded-lg font-medium text-sm">
                         New Post
                     </button>
 
@@ -179,6 +183,12 @@ const LeftSidebar = ({ samplePosts }) => {
                     </div>
                 </div>
             </div>
+
+            {/* New Post Modal */}
+            <NewPostModal
+                isOpen={isNewPostModalOpen}
+                onClose={() => setIsNewPostModalOpen(false)}
+            />
         </div>
     );
 };

@@ -4,7 +4,7 @@ const app = express();
 
 // routers
 const authRouter = require("./routes/authRouter");
-const postRouter = require("./routes/authRouter");
+const postRouter = require("./routes/postRouter");
 
 // Middleware
 app.use(
@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/auth", authRouter);
-app.use("/post", postRouter);
+app.use("/posts", postRouter);
 
 app.get("/", (req, res) => {
     res.send("Hello World!");
