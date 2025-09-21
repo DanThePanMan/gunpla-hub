@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import PostCard from "../universal/PostCard";
+import PostsContext from "../../contexts/postsContext";
 
-const Feed = ({ posts, loading }) => {
+const Feed = ({ loading }) => {
+    const { posts } = useContext(PostsContext);
     if (loading) {
         return (
             <div className="space-y-4">

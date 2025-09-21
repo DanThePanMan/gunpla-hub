@@ -1,8 +1,11 @@
 import React, { useState, useContext } from "react";
 import JWTContext from "../../contexts/jwtContext";
+import PostsContext from "../../contexts/postsContext";
+import uploadFile from "../../utils/supabaseUtils";
 
 const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
     const { user, token } = useContext(JWTContext);
+    const { setPosts } = useContext(PostsContext);
     const [formData, setFormData] = useState({
         title: "",
         content: "",
@@ -16,6 +19,16 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [errors, setErrors] = useState({});
+
+    const [images, setImages] = useState([]);
+
+    const handleImageUpload = (files) => {
+        setImages(Array.from(files));
+    };
+
+    const handleRemoveImage = (idxToRemove) => {
+        setImages((prev) => prev.filter((_, idx) => idx !== idxToRemove));
+    };
 
     const gradeOptions = [
         "High Grade",
@@ -95,6 +108,14 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
 
         setIsSubmitting(true);
 
+        // now do the prisma thing to form links, that can be stored
+        const urls = [];
+
+        for (const image in images) {
+            const url = await uploadFile(image, "./post_images");
+            console.log(url);
+        }
+
         try {
             const postData = {
                 title: formData.title.trim(),
@@ -146,9 +167,10 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
                 if (onPostCreated) {
                     onPostCreated(data.post);
                 }
+                setImages([]);
+                setPosts((prev) => [data.post, ...prev]);
 
                 onClose();
-                window.location.reload(false);
             } else {
                 if (data.errors) {
                     const validationErrors = {};
@@ -226,6 +248,64 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
 
                     {/* Form */}
                     <form onSubmit={handleSubmit} className="space-y-4">
+                        {/* Image Upload */}
+                        <div>
+                            <label
+                                className="block text-sm font-medium text-slate-200 mb-2"
+                                htmlFor="post-images">
+                                Images
+                            </label>
+                            <input
+                                id="post-images"
+                                name="images"
+                                type="file"
+                                accept="image/*"
+                                multiple
+                                disabled={isSubmitting}
+                                className="input-field w-full px-3 py-2 rounded disabled:opacity-50"
+                                onChange={(e) =>
+                                    handleImageUpload(e.target.files)
+                                }
+                            />
+                            {/* Preview selected images */}
+                            {images.length > 0 && (
+                                <div className="flex flex-wrap gap-2 mt-2">
+                                    {images.map((img, idx) => (
+                                        <div
+                                            key={idx}
+                                            className="relative w-16 h-16 bg-slate-800 border border-slate-700 rounded overflow-hidden flex items-center justify-center">
+                                            <img
+                                                src={URL.createObjectURL(img)}
+                                                alt={`preview-${idx}`}
+                                                className="object-cover w-full h-full"
+                                            />
+                                            <button
+                                                type="button"
+                                                className="absolute top-1 right-1 w-5 h-5 flex items-center justify-center bg-white/90 text-slate-700 border border-slate-300 rounded-full shadow-sm hover:bg-red-500 hover:text-white transition"
+                                                style={{ padding: 0 }}
+                                                onClick={() =>
+                                                    handleRemoveImage(idx)
+                                                }
+                                                aria-label="Remove image">
+                                                <svg
+                                                    width="12"
+                                                    height="12"
+                                                    viewBox="0 0 12 12"
+                                                    fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M3 3L9 9M9 3L3 9"
+                                                        stroke="currentColor"
+                                                        strokeWidth="1.5"
+                                                        strokeLinecap="round"
+                                                    />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
                         {/* General Error */}
                         {errors.general && (
                             <div className="bg-red-500/20 border border-red-500/50 text-red-200 px-4 py-3 rounded">

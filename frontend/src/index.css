@@ -137,3 +137,34 @@ a:hover,
 button:hover {
     transition: all 0.15s ease;
 }
+
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 12px;
+    background: var(--bg-secondary);
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        135deg,
+        var(--primary-dark) 60%,
+        var(--cool-steel) 100%
+    );
+    border-radius: 8px;
+    border: 2px solid var(--bg-secondary);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+        135deg,
+        var(--primary) 60%,
+        var(--cool-steel) 100%
+    );
+}
+::-webkit-scrollbar-corner {
+    background: var(--bg-secondary);
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-dark) var(--bg-secondary);
+}

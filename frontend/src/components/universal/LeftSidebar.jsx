@@ -1,9 +1,11 @@
 import React, { useContext, useState } from "react";
 import JWTContext from "../../contexts/jwtContext";
 import NewPostModal from "./newPost";
+import PostsContext from "../../contexts/postsContext";
 
-const LeftSidebar = ({ samplePosts }) => {
+const LeftSidebar = () => {
     const { user, setToken, setUser } = useContext(JWTContext);
+    const { posts, setPosts } = useContext(PostsContext);
     const [isNewPostModalOpen, setIsNewPostModalOpen] = useState(false);
 
     const handleLogout = () => {
@@ -163,13 +165,13 @@ const LeftSidebar = ({ samplePosts }) => {
                         <div className="flex justify-between">
                             <span className="text-slate-400">Builds</span>
                             <span className="text-blue-400 font-semibold">
-                                {samplePosts?.length || 0}
+                                {posts?.length || 0}
                             </span>
                         </div>
                         <div className="flex justify-between">
                             <span className="text-slate-400">Likes</span>
                             <span className="text-green-400 font-semibold">
-                                {samplePosts?.reduce(
+                                {posts?.reduce(
                                     (total, post) =>
                                         total + (post.likedBy?.length || 0),
                                     0
@@ -179,7 +181,7 @@ const LeftSidebar = ({ samplePosts }) => {
                         <div className="flex justify-between">
                             <span className="text-slate-400">Comments</span>
                             <span className="text-purple-400 font-semibold">
-                                {samplePosts?.reduce(
+                                {posts?.reduce(
                                     (total, post) =>
                                         total + (post.comments?.length || 0),
                                     0
@@ -194,6 +196,8 @@ const LeftSidebar = ({ samplePosts }) => {
             <NewPostModal
                 isOpen={isNewPostModalOpen}
                 onClose={() => setIsNewPostModalOpen(false)}
+                posts={posts}
+                setPosts={setPosts}
             />
         </div>
     );
