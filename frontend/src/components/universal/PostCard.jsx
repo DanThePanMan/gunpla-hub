@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const PostCard = ({ post }) => {
     const [liked, setLiked] = useState(false);
     const [likeCount, setLikeCount] = useState(post.likedBy?.length || 0);
+    const [carouselIdx, setCarouselIdx] = useState(0);
 
     const handleLike = () => {
         setLiked(!liked);
@@ -18,8 +19,62 @@ const PostCard = ({ post }) => {
         });
     };
 
+    // Carousel navigation
+    const hasPictures =
+        Array.isArray(post.pictures) && post.pictures.length > 0;
+    const handlePrev = (e) => {
+        e.stopPropagation();
+        setCarouselIdx((prev) =>
+            prev === 0 ? post.pictures.length - 1 : prev - 1
+        );
+    };
+    const handleNext = (e) => {
+        e.stopPropagation();
+        setCarouselIdx((prev) =>
+            prev === post.pictures.length - 1 ? 0 : prev + 1
+        );
+    };
+
     return (
         <div className="form-card p-4 rounded border">
+            {/* Image Carousel */}
+            {hasPictures && (
+                <div className="mb-4 relative flex items-center justify-center">
+                    <img
+                        src={post.pictures[carouselIdx]}
+                        alt={`post-img-${carouselIdx}`}
+                        className="max-h-72 w-full object-contain rounded border border-slate-700 bg-slate-900"
+                    />
+                    {post.pictures.length > 1 && (
+                        <>
+                            <button
+                                onClick={handlePrev}
+                                className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-black/80 z-10"
+                                aria-label="Previous image">
+                                &#8592;
+                            </button>
+                            <button
+                                onClick={handleNext}
+                                className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-black/80 z-10"
+                                aria-label="Next image">
+                                &#8594;
+                            </button>
+                            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+                                {post.pictures.map((_, idx) => (
+                                    <span
+                                        key={idx}
+                                        className={`inline-block w-2 h-2 rounded-full ${
+                                            carouselIdx === idx
+                                                ? "bg-white"
+                                                : "bg-slate-500"
+                                        }`}
+                                    />
+                                ))}
+                            </div>
+                        </>
+                    )}
+                </div>
+            )}
             {/* Post Header */}
             <div className="flex items-center mb-3">
                 <div

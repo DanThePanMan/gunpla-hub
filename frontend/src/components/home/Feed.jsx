@@ -51,9 +51,6 @@ const Feed = ({ loading }) => {
                         Be the first to share your Gunpla builds with the
                         community!
                     </p>
-                    <button className="btn-primary px-4 py-2 rounded font-medium">
-                        Create Your First Post
-                    </button>
                 </div>
             </div>
         );

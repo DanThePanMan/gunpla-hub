@@ -15,6 +15,16 @@
 - finish the post get and post routes, then do params for when you want a specific users' posts. 
 -show all posts(route done, now i need to make it fetch on themain page")(done)
 
+-pics
+    here is how pics will work: each pic has a url, and that can be stored in the db for image access
+
+    in the app, after you upload, you retrieve the url and push it into postgres.
+
+    1: start from the front end, make image uploadable and print out the image url
+    2: make the post request also include images
+    3: in the back end store it
+
+
 -post detail 
     1. add post to react router
     1.5. make all posts clickable ot navigate to that link
@@ -23,7 +33,7 @@
     4. implement all post funcitonalities including share
 
 
--pics
+
 
 -user page
 (now it will be the same as the ejs app)

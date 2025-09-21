@@ -111,15 +111,25 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
         // now do the prisma thing to form links, that can be stored
         const urls = [];
 
-        for (const image in images) {
-            const url = await uploadFile(image, "./post_images");
-            console.log(url);
+        for (const image of images) {
+            // Extract extension safely
+            const ext = image.name.includes(".")
+                ? image.name.substring(image.name.lastIndexOf("."))
+                : "";
+            const uniqueName = `post_images/${Date.now()}-${Math.random()
+                .toString(36)
+                .slice(2)}${ext}`;
+            const data = await uploadFile(image, uniqueName);
+            if (data && data.publicUrl) {
+                urls.push(data.publicUrl);
+            }
         }
 
         try {
             const postData = {
                 title: formData.title.trim(),
                 content: formData.content.trim(),
+                pictures: urls,
             };
 
             if (formData.includeBuild) {

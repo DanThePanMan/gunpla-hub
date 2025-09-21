@@ -70,7 +70,7 @@ async function postPost(req, res) {
             });
         }
 
-        const { title, content, build } = req.body;
+        const { title, content, pictures, build } = req.body;
 
         // Get the authenticated user's ID from the JWT token
         const authorId = req.user.id;
@@ -80,6 +80,7 @@ async function postPost(req, res) {
             data: {
                 title,
                 content,
+                pictures,
                 authorId: parseInt(authorId),
                 build: build
                     ? {

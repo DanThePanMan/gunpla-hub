@@ -39,7 +39,8 @@ model Post {
   build Build?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  // images will be there eventually
+  pictures String[]
+
 }
 
 model Likes {
