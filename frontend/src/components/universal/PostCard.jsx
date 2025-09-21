@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 const PostCard = ({ post }) => {
     const [liked, setLiked] = useState(false);
     const [likeCount, setLikeCount] = useState(post.likedBy?.length || 0);
     const [carouselIdx, setCarouselIdx] = useState(0);
+    const [firstImgHeight, setFirstImgHeight] = useState(null);
+    const firstImgRef = useRef(null);
 
     const handleLike = () => {
         setLiked(!liked);
@@ -35,15 +37,30 @@ const PostCard = ({ post }) => {
         );
     };
 
+    useEffect(() => {
+        if (firstImgRef.current && carouselIdx === 0) {
+            setFirstImgHeight(firstImgRef.current.offsetHeight);
+        }
+    }, [carouselIdx, post.pictures]);
+
     return (
         <div className="form-card p-4 rounded border">
             {/* Image Carousel */}
             {hasPictures && (
-                <div className="mb-4 relative flex items-center justify-center">
+                <div
+                    className="mb-4 relative flex items-center justify-center"
+                    style={firstImgHeight ? { minHeight: firstImgHeight } : {}}>
                     <img
+                        ref={carouselIdx === 0 ? firstImgRef : null}
                         src={post.pictures[carouselIdx]}
                         alt={`post-img-${carouselIdx}`}
                         className="max-h-72 w-full object-contain rounded border border-slate-700 bg-slate-900"
+                        onLoad={
+                            carouselIdx === 0
+                                ? (e) =>
+                                      setFirstImgHeight(e.target.offsetHeight)
+                                : undefined
+                        }
                     />
                     {post.pictures.length > 1 && (
                         <>

@@ -108,11 +108,9 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
 
         setIsSubmitting(true);
 
-        // now do the prisma thing to form links, that can be stored
         const urls = [];
 
         for (const image of images) {
-            // Extract extension safely
             const ext = image.name.includes(".")
                 ? image.name.substring(image.name.lastIndexOf("."))
                 : "";
@@ -124,6 +122,7 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
                 urls.push(data.publicUrl);
             }
         }
+        console.log(urls);
 
         try {
             const postData = {
