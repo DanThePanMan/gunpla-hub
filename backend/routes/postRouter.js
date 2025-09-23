@@ -13,4 +13,7 @@ postRouter.post("/", verifyToken, postValidator, postController.postPost);
 // Get posts by specific user (public)
 postRouter.get("/user/:userId", postController.getUserPosts);
 
+// get posts by postID
+postRouter.get("/:postID", postController.postGetSingle);
+
 module.exports = postRouter;

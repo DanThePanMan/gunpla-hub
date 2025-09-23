@@ -59,6 +59,86 @@ async function postGet(req, res) {
     }
 }
 
+//get single post
+async function postGetSingle(req, res) {
+    try {
+        const { postID } = req.params;
+
+        if (!postID) {
+            return res.status(400).json({
+                success: false,
+                message: "Post ID is required",
+            });
+        }
+
+        const id = parseInt(postID, 10);
+        if (Number.isNaN(id)) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid post ID",
+            });
+        }
+
+        const post = await prisma.post.findUnique({
+            where: { id },
+            include: {
+                author: {
+                    select: {
+                        userId: true,
+                        displayName: true,
+                        email: true,
+                    },
+                },
+                build: true,
+                likedBy: {
+                    include: {
+                        likedUser: {
+                            select: {
+                                userId: true,
+                                displayName: true,
+                            },
+                        },
+                    },
+                },
+                comments: {
+                    include: {
+                        commenterUser: {
+                            select: {
+                                userId: true,
+                                displayName: true,
+                            },
+                        },
+                    },
+                },
+                _count: {
+                    select: {
+                        likedBy: true,
+                        comments: true,
+                    },
+                },
+            },
+        });
+
+        if (!post) {
+            return res.status(404).json({
+                success: false,
+                message: "Post not found",
+            });
+        }
+
+        res.json({
+            success: true,
+            post,
+        });
+    } catch (error) {
+        console.error("Error fetching user posts:", error);
+        res.status(500).json({
+            success: false,
+            message: "Failed to fetch user posts",
+        });
+    }
+}
+
 // Create a new post
 async function postPost(req, res) {
     try {
@@ -216,4 +296,5 @@ module.exports = {
     postGet,
     postPost,
     getUserPosts,
+    postGetSingle,
 };
