@@ -48,6 +48,24 @@
     object-fit: contain;
 }
 
+/* Set global default font to Geist (via Tailwind's font-sans) */
+@layer base {
+    html,
+    body {
+        @apply font-sans;
+    }
+    :root {
+        /* In case any non-Tailwind styles run, provide explicit fallback */
+        font-family: "Geist", ui-sans-serif, system-ui, -apple-system,
+            "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        /* Ensure Tailwind's --font-sans custom property resolves to Geist
+           so base rules using var(--font-sans) will use Geist. */
+        --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system,
+            "BlinkMacSystemFont", "Segoe UI", Roboto, "Helvetica Neue", Arial,
+            sans-serif;
+    }
+}
+
 /* Custom Scrollbar Styling */
 ::-webkit-scrollbar {
     width: 12px;
