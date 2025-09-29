@@ -1,20 +1,21 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
 @plugin "daisyui/theme" {
     name: "nuGundam";
     default: true;
-    prefersdark: false;
-    color-scheme: "light";
-    --color-base-100: oklch(98% 0.003 247.858);
-    --color-base-200: oklch(96% 0.007 247.896);
-    --color-base-300: oklch(92% 0.013 255.508);
-    --color-base-content: oklch(20% 0.042 265.755);
-    --color-primary: oklch(28% 0.091 267.935);
-    --color-primary-content: oklch(98% 0.022 95.277);
+    prefersdark: true;
+    color-scheme: "dark";
+    --color-base-100: oklch(20% 0.042 265.755);
+    --color-base-200: oklch(27% 0.041 260.031);
+    --color-base-300: oklch(37% 0.034 259.733);
+    --color-base-content: oklch(92% 0.013 255.508);
+    --color-primary: oklch(92% 0.013 255.508);
+    --color-primary-content: oklch(27% 0.041 260.031);
     --color-secondary: oklch(39% 0.141 25.723);
     --color-secondary-content: oklch(97% 0.014 343.198);
     --color-accent: oklch(42% 0.095 57.708);
-    --color-accent-content: oklch(98% 0.022 95.277);
+    --color-accent-content: oklch(92% 0.013 255.508);
     --color-neutral: oklch(37% 0.044 257.287);
     --color-neutral-content: oklch(98% 0.003 247.858);
     --color-info: oklch(60% 0.126 221.723);
@@ -27,12 +28,12 @@
     --color-error-content: oklch(96% 0.015 12.422);
     --radius-selector: 2rem;
     --radius-field: 0.5rem;
-    --radius-box: 0.5rem;
+    --radius-box: 1rem;
     --size-selector: 0.28125rem;
     --size-field: 0.28125rem;
     --border: 1.5px;
-    --depth: 1;
-    --noise: 1;
+    --depth: 0;
+    --noise: 0;
 }
 
 /* Logo styling */
@@ -51,18 +52,8 @@
 /* Set global default font to Geist (via Tailwind's font-sans) */
 @layer base {
     html,
-    body {
-        @apply font-sans;
-    }
     :root {
-        /* In case any non-Tailwind styles run, provide explicit fallback */
-        font-family: "Geist", ui-sans-serif, system-ui, -apple-system,
-            "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        /* Ensure Tailwind's --font-sans custom property resolves to Geist
-           so base rules using var(--font-sans) will use Geist. */
-        --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system,
-            "BlinkMacSystemFont", "Segoe UI", Roboto, "Helvetica Neue", Arial,
-            sans-serif;
+        font-family: "Geist";
     }
 }
 

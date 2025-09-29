@@ -115,7 +115,7 @@ const SignUp = () => {
         <div className="min-h-screen w-full flex flex-col justify-center items-center p-4">
             {/* Main content */}
             <div className="relative z-10 w-full max-w-lg">
-                {/* Logo and Branding - Compact */}
+                {/* Logo and Branding */}
                 <div className="text-center mb-4">
                     <img
                         src="/image.png"
@@ -130,10 +130,10 @@ const SignUp = () => {
                     </p>
                 </div>
 
-                {/* Sign Up Form - Compact */}
+                {/* Sign Up Form */}
                 <form
                     onSubmit={handleSubmit}
-                    className="form-card p-4 rounded border">
+                    className="card bg-base-200 border border-base-300 p-6">
                     {/* Form Fields in Grid Layout */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
                         {/* Username Field */}
@@ -149,9 +149,7 @@ const SignUp = () => {
                                 name="username"
                                 value={formData.username}
                                 onChange={handleChange}
-                                className={`input-field w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-sm ${
-                                    errors.username ? "border-red-500" : ""
-                                }`}
+                                className="input"
                                 placeholder="Display name"
                             />
                             {errors.username && (
@@ -174,9 +172,7 @@ const SignUp = () => {
                                 name="email"
                                 value={formData.email}
                                 onChange={handleChange}
-                                className={`input-field w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-sm ${
-                                    errors.email ? "border-red-500" : ""
-                                }`}
+                                className="input"
                                 placeholder="Email address"
                             />
                             {errors.email && (
@@ -202,9 +198,7 @@ const SignUp = () => {
                                 name="password"
                                 value={formData.password}
                                 onChange={handleChange}
-                                className={`input-field w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-sm ${
-                                    errors.password ? "border-red-500" : ""
-                                }`}
+                                className="input"
                                 placeholder="Password"
                             />
                             {errors.password && (
@@ -227,11 +221,7 @@ const SignUp = () => {
                                 name="confirmPassword"
                                 value={formData.confirmPassword}
                                 onChange={handleChange}
-                                className={`input-field w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-sm ${
-                                    errors.confirmPassword
-                                        ? "border-red-500"
-                                        : ""
-                                }`}
+                                className="input"
                                 placeholder="Confirm password"
                             />
                             {errors.confirmPassword && (
@@ -243,9 +233,7 @@ const SignUp = () => {
                     </div>
 
                     {/* Submit Button */}
-                    <button
-                        type="submit"
-                        className="btn-primary w-full py-2 px-4 rounded font-medium text-white">
+                    <button type="submit" className="btn btn-primary w-full ">
                         Create Account
                     </button>
 

@@ -6,7 +6,6 @@ const LoginSection = (props) => {
 
     return (
         <>
-            {/* Logo and Branding */}
             <div className="text-center mb-8">
                 <img
                     src="/image.png"
@@ -21,9 +20,8 @@ const LoginSection = (props) => {
                 </p>
             </div>
 
-            {/* Login Form */}
-            <form className="form-card p-6 rounded border w-96">
-                <p className="text-red-400 font-semibold">{message}</p>
+            <form className="card bg-base-200 border border-base-300 p-6  w-96">
+                <p className="text-warning font-semibold">{message}</p>
                 <div className="mb-4">
                     <label
                         htmlFor="email"
@@ -35,7 +33,7 @@ const LoginSection = (props) => {
                         id="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="input-field w-full px-3 py-2 border rounded"
+                        className="input w-full"
                         placeholder="Enter your email"
                         required
                     />
@@ -52,7 +50,7 @@ const LoginSection = (props) => {
                         id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="input-field w-full px-3 py-2 border rounded"
+                        className="input w-full"
                         placeholder="Enter your password"
                         required
                     />
@@ -64,7 +62,7 @@ const LoginSection = (props) => {
                         submitLogin();
                     }}
                     type="submit"
-                    className="btn-primary w-full py-2 px-4 rounded font-medium text-white">
+                    className="btn btn-primary w-full py-2 px-4  font-medium ">
                     Log in
                 </button>
 
