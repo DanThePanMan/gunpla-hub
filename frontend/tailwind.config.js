@@ -3,13 +3,20 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ["Inter", "system-ui", "sans-serif"],
-                inter: ["Inter", "system-ui", "sans-serif"],
-            },
-            colors: {
-                // You can add custom colors here if needed
+                sans: [
+                    "Inter",
+                    "ui-sans-serif",
+                    "system-ui",
+                    "-apple-system",
+                    "BlinkMacSystemFont",
+                    "Segoe UI",
+                    "Roboto",
+                    "Helvetica Neue",
+                    "Arial",
+                    "sans-serif",
+                ],
             },
         },
     },
-    plugins: [],
+    plugins: [require("daisyui")],
 };

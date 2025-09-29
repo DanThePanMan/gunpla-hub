@@ -7,23 +7,19 @@ const Welcome = () => (
                 alt="Gunpla Hub Logo"
                 className="logo-large mx-auto mb-4"
             />
-            <h1 className="text-3xl font-semibold text-slate-100 mb-4">
-                Welcome to Gunpla Hub
-            </h1>
-            <p className="text-lg text-slate-300 mb-6 max-w-2xl">
-                The ultimate community for Gundam model enthusiasts. Share your
-                builds, connect with fellow builders, and discover amazing
-                creations.
+            <h1 className="text-3xl font-bold  mb-4">Welcome to Gunpla Hub</h1>
+            <p className="text-sm lg:text-base max-w-2xl my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
+                Sign in/make an account to share your builds! or dont
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a
                     href="/Login"
-                    className="btn-primary px-6 py-2 rounded font-medium text-white">
+                    className="btn btn-neutral px-6 py-2 rounded font-medium">
                     Sign In
                 </a>
                 <a
                     href="/signup"
-                    className="px-6 py-2 border border-slate-500 text-slate-300 rounded font-medium hover:bg-slate-700 hover:border-slate-400">
+                    className="px-6 py-2 border  rounded font-medium ">
                     Join Community
                 </a>
                 <button
@@ -31,7 +27,7 @@ const Welcome = () => (
                         // TODO: Implement guest account functionality
                         alert("Guest account feature coming soon!");
                     }}
-                    className="px-6 py-2 bg-slate-600 text-slate-200 rounded font-medium hover:bg-slate-500 hover:text-white border border-slate-500">
+                    className="px-6 py-2  rounded font-medium ">
                     Continue as Guest
                 </button>
             </div>
