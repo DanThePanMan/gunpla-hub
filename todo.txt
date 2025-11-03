@@ -38,15 +38,19 @@
 
 
 
--migrate to railway because koyeb sucks
--user page
+-migrate to railway because koyeb sucks (done)
+- fix isauthor
+- edit and delete post
+
+
+-user page (and add another to the top right dropdown for "my user page")
 (now it will be the same as the ejs app)
 
 -commenting and liking
 -following
--show posts from who i followed
+-community tab
 -pfp
--upload images
+
 
 (advanced stuff)
 -direct message
