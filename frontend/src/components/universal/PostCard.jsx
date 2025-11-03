@@ -53,7 +53,7 @@ const PostCard = ({ post }) => {
     };
 
     return (
-        <div className="form-card rounded border">
+        <div className="card bg-base-200 w-[48em] shadow-sm">
             <div
                 className=" hover:bg-slate-700 ease-in-out transition-all cursor-pointer p-4 rounded-sm"
                 onClick={() => postClickHandler(post.id)}>

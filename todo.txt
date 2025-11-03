@@ -33,9 +33,13 @@
     4. implement all post funcitonalities including share
 
 
+                this is a maybe                      rewrite front end with new react project
+                                        to do so, delete all the components except for jwt context and start form there
 
 
--user 5page
+
+-migrate to railway because koyeb sucks
+-user page
 (now it will be the same as the ejs app)
 
 -commenting and liking

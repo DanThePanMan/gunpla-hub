@@ -39,23 +39,23 @@ export default function CommentForm({ postId, onPosted }) {
     if (!user) return <p className="text-slate-400">Log in to comment.</p>;
 
     return (
-        <form onSubmit={submit} className="space-y-2">
+        <form
+            onSubmit={submit}
+            className="card bg-base-200 border border-base-300 p-6 ">
             {error && <div className="text-red-400">{error}</div>}
             <textarea
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
-                className="w-full p-2 rounded bg-slate-800 border border-slate-700"
+                className="textarea w-full resize-none"
                 rows={3}
                 placeholder="Write a comment..."
             />
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center pt-2">
                 <div className="text-sm text-slate-400">
                     Posting as{" "}
                     <span className="text-slate-200">{user.displayName}</span>
                 </div>
-                <button
-                    className="btn-primary px-4 py-2 rounded"
-                    disabled={loading}>
+                <button className="btn btn-primary" disabled={loading}>
                     {loading ? "Posting..." : "Post Comment"}
                 </button>
             </div>

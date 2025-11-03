@@ -230,7 +230,7 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
 
             {/* Modal */}
             <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-                <div className="form-card p-6 rounded border">
+                <div className="card bg-base-200 border border-base-300 p-6 ">
                     {/* Header */}
                     <div className="flex items-center justify-between mb-4">
                         <h2 className="text-xl font-semibold text-slate-100">
@@ -258,7 +258,7 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
                     {/* Form */}
                     <form onSubmit={handleSubmit} className="space-y-4">
                         {/* Image Upload */}
-                        <div>
+                        <div className="">
                             <label
                                 className="block text-sm font-medium text-slate-200 mb-2"
                                 htmlFor="post-images">
@@ -271,7 +271,7 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
                                 accept="image/*"
                                 multiple
                                 disabled={isSubmitting}
-                                className="input-field w-full px-3 py-2 rounded disabled:opacity-50"
+                                className="file-input"
                                 onChange={(e) =>
                                     handleImageUpload(e.target.files)
                                 }
@@ -336,7 +336,7 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
                                 value={formData.title}
                                 onChange={handleInputChange}
                                 disabled={isSubmitting}
-                                className={`input-field w-full px-3 py-2 rounded disabled:opacity-50 ${
+                                className={`input w-full disabled:opacity-50 ${
                                     errors.title ? "border-red-500" : ""
                                 }`}
                                 placeholder="What's your build about?"
@@ -363,7 +363,7 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
                                 onChange={handleInputChange}
                                 disabled={isSubmitting}
                                 rows={4}
-                                className={`input-field w-full px-3 py-2 rounded disabled:opacity-50 resize-none ${
+                                className={`textarea w-full disabled:opacity-50 resize-none ${
                                     errors.content ? "border-red-500" : ""
                                 }`}
                                 placeholder="Share details about your build, techniques used, or your experience..."
@@ -399,7 +399,7 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
 
                         {/* Build Details */}
                         {formData.includeBuild && (
-                            <div className="bg-slate-700 p-4 rounded border border-slate-600 space-y-3">
+                            <div className="card bg-base-100 border border-base-300 p-4 rounded borde space-y-3">
                                 <h3 className="text-lg font-semibold text-slate-200 mb-3">
                                     Build Details
                                 </h3>
@@ -418,7 +418,7 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
                                         value={formData.build.kitName}
                                         onChange={handleInputChange}
                                         disabled={isSubmitting}
-                                        className={`input-field w-full px-4 py-3 rounded-lg transition duration-200 disabled:opacity-50 ${
+                                        className={`input w-full transition duration-200 disabled:opacity-50 ${
                                             errors["build.kitName"]
                                                 ? "border-red-500 focus:border-red-500 focus:ring-red-500"
                                                 : ""
@@ -446,7 +446,7 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
                                         value={formData.build.grade}
                                         onChange={handleInputChange}
                                         disabled={isSubmitting}
-                                        className={`input-field w-full px-4 py-3 rounded-lg transition duration-200 disabled:opacity-50 ${
+                                        className={`input w-full transition duration-200 disabled:opacity-50 ${
                                             errors["build.grade"]
                                                 ? "border-red-500 focus:border-red-500 focus:ring-red-500"
                                                 : ""
@@ -481,7 +481,7 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
                                         disabled={isSubmitting}
                                         min="1"
                                         max="10"
-                                        className="input-field w-full px-4 py-3 rounded-lg transition duration-200 disabled:opacity-50"
+                                        className="input transition duration-200 disabled:opacity-50"
                                         placeholder="Optional"
                                     />
                                 </div>
@@ -500,7 +500,7 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
                                         onChange={handleInputChange}
                                         disabled={isSubmitting}
                                         rows={3}
-                                        className="input-field w-full px-4 py-3 rounded-lg transition duration-200 disabled:opacity-50 resize-none"
+                                        className="textarea w-full transition duration-200 disabled:opacity-50 resize-none"
                                         placeholder="e.g., Panel lining, custom paint scheme, weathering effects..."
                                         maxLength={1000}
                                     />
@@ -518,13 +518,13 @@ const NewPostModal = ({ isOpen, onClose, onPostCreated }) => {
                                 type="button"
                                 onClick={handleClose}
                                 disabled={isSubmitting}
-                                className="px-4 py-2 text-slate-300 hover:text-slate-100 disabled:opacity-50">
+                                className="btn btn-secondary disabled:opacity-50">
                                 Cancel
                             </button>
                             <button
                                 type="submit"
                                 disabled={isSubmitting || !user}
-                                className="btn-primary px-4 py-2 rounded disabled:opacity-50 disabled:cursor-not-allowed">
+                                className="btn btn-accent disabled:opacity-50">
                                 {isSubmitting ? (
                                     <div className="flex items-center gap-2">
                                         <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>

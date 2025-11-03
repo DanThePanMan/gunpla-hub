@@ -10,7 +10,7 @@ const Feed = ({ loading }) => {
                 {[1, 2, 3].map((i) => (
                     <div
                         key={i}
-                        className="form-card p-4 rounded border mb-4 animate-pulse">
+                        className="card bg-base-200 w-[48em] p-6 shadow-sm animate-pulse">
                         <div className="flex items-center mb-3">
                             <div className="w-10 h-10 bg-slate-600 rounded-full"></div>
                             <div className="ml-3">

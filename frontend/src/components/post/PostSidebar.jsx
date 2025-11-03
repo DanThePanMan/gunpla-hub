@@ -5,36 +5,36 @@ export default function PostSidebar({ post, isAuthor, onDelete }) {
     const navigate = useNavigate();
 
     return (
-        <div className="bg-slate-800 p-4 rounded border border-slate-700">
+        <div className="card bg-base-200 border border-base-300 p-6 ">
             <div className="flex items-center gap-3 mb-3 p-2 rounded-sm hover:bg-slate-700 transition-colors ease-in-out">
                 <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center text-white font-semibold"
+                    className="w-12 h-12 rounded-full flex items-center justify-center text-primary font-semibold"
                     style={{ background: "var(--primary)" }}>
                     {post.author.displayName?.charAt(0).toUpperCase()}
                 </div>
                 <div>
-                    <div className="text-slate-200 font-semibold">
+                    <div className="text-primary font-semibold">
                         {post.author.displayName}
                     </div>
-                    <div className="text-slate-400 text-sm">
+                    <div className="text-primary text-sm">
                         {new Date(post.createdAt).toLocaleString()}
                     </div>
                 </div>
             </div>
 
-            <h1 className="text-xl font-bold text-slate-100 mb-2">
+            <h1 className="text-xl font-bold text-primary mb-2">
                 {post.title}
             </h1>
-            <p className="text-slate-300 mb-4 white-space-pre-wrap">
+            <p className="text-primary mb-4 white-space-pre-wrap">
                 {post.content}
             </p>
 
             {post.build && (
-                <div className="bg-slate-700 p-3 rounded mb-3 border border-slate-600">
-                    <div className="text-blue-400 font-medium mb-2">
+                <div className="card bg-base-200 border border-base-300 p-6 ">
+                    <div className="text-accent font-medium mb-2">
                         Gunpla Build
                     </div>
-                    <div className="text-sm text-slate-200">
+                    <div className="text-sm text-primary">
                         {post.build.kitName} —{" "}
                         <span className="text-slate-400">
                             {post.build.grade}
@@ -66,12 +66,12 @@ export default function PostSidebar({ post, isAuthor, onDelete }) {
                         <>
                             <button
                                 onClick={() => navigate(`/Home`)}
-                                className="px-3 py-1 bg-slate-700 text-sm rounded">
+                                className="btn btn-accent">
                                 Edit
                             </button>
                             <button
                                 onClick={onDelete}
-                                className="px-3 py-1 bg-red-600 text-sm rounded">
+                                className="btn btn-secondary">
                                 Delete
                             </button>
                         </>
@@ -83,7 +83,7 @@ export default function PostSidebar({ post, isAuthor, onDelete }) {
                                 url: window.location.href,
                             })
                         }
-                        className="px-3 py-1 bg-slate-700 text-sm rounded">
+                        className="btn btn-primary">
                         Share
                     </button>
                 </div>
