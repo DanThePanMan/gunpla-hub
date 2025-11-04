@@ -4,7 +4,7 @@ import Login from "./pages/Login.jsx";
 import Welcome from "./pages/Welcome.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import Home from "./pages/Home.jsx";
-import Post from "./pages/Post.jsx";
+import Post from "./pages/post.jsx";
 import User from "./pages/User.jsx";
 import Layout from "./components/universal/Layout.jsx";
 
