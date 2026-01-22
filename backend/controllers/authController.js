@@ -60,6 +60,7 @@ async function loginPost(req, res) {
             success: true,
             message: "Login successful",
             user: {
+                id: user.userId,
                 displayName: user.displayName,
                 email: user.email,
             },
@@ -132,7 +133,11 @@ async function userPost(req, res) {
         return res.status(201).json({
             success: true,
             message: "Sign-up successful",
-            user: user,
+            user: {
+                id: user.userId,
+                displayName: user.displayName,
+                email: user.email,
+            },
             token: token,
         });
     } catch (error) {

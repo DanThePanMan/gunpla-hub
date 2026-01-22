@@ -15,80 +15,80 @@ datasource db {
 }
 
 model User {
-  userId    Int      @id @default(autoincrement())
-  displayName String
-  email     String   @unique
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  posts     Post[]
-  likes     Likes[]
-  following Follows[] @relation("userFollowing")
-  followers Follows[] @relation("userFollowers")
-  comments Comment[] @relation("userCommented")
+  userId         Int       @id @default(autoincrement())
+  displayName    String
+  email          String    @unique
+  password       String
+  profilePicture String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  posts          Post[]
+  likes          Likes[]
+  following      Follows[] @relation("userFollowing")
+  followers      Follows[] @relation("userFollowers")
+  comments       Comment[] @relation("userCommented")
 }
 
 model Post {
-  id Int @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   authorId  Int
-  author User  @relation(fields: [authorId], references: [userId])
-  title String
-  content String
-  likedBy Likes[]
-  comments Comment[]
-  build Build?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  pictures String[]
-
+  author    User      @relation(fields: [authorId], references: [userId])
+  title     String
+  content   String
+  likedBy   Likes[]
+  comments  Comment[]
+  build     Build?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  pictures  String[]
 }
 
 model Likes {
-  id Int @id @default(autoincrement())
-  userId Int
-  likedUser User @relation(fields: [userId], references: [userId])
-  postId Int
-  likedPost Post @relation(fields: [postId], references: [id])
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  likedUser User     @relation(fields: [userId], references: [userId])
+  postId    Int
+  likedPost Post     @relation(fields: [postId], references: [id])
   createdAt DateTime @default(now())
-  
+
   @@unique([userId, postId])
 }
 
 model Follows {
-  id Int @id @default(autoincrement())
-  followerId Int
-  followerUser User @relation("userFollowing", fields: [followerId], references: [userId])
-  followedId Int
-  followedUser User @relation("userFollowers", fields: [followedId], references: [userId])
-  createdAt DateTime @default(now())
-  
+  id           Int      @id @default(autoincrement())
+  followerId   Int
+  followerUser User     @relation("userFollowing", fields: [followerId], references: [userId])
+  followedId   Int
+  followedUser User     @relation("userFollowers", fields: [followedId], references: [userId])
+  createdAt    DateTime @default(now())
+
   @@unique([followerId, followedId])
 }
 
 model Comment {
-  id Int @id @default(autoincrement())
-  commenterId Int
+  id            Int  @id @default(autoincrement())
+  commenterId   Int
   commenterUser User @relation("userCommented", fields: [commenterId], references: [userId])
-  
+
   // Can comment on either a post OR another comment, not both
   postId Int?
-  post Post? @relation(fields: [postId], references: [id])
-  
+  post   Post? @relation(fields: [postId], references: [id])
+
   parentCommentId Int?
-  parentComment Comment? @relation("CommentReplies", fields: [parentCommentId], references: [id])
-  replies Comment[] @relation("CommentReplies")
-  
-  content String
+  parentComment   Comment?  @relation("CommentReplies", fields: [parentCommentId], references: [id])
+  replies         Comment[] @relation("CommentReplies")
+
+  content   String
   createdAt DateTime @default(now())
 }
 
 model Build {
-  id Int @id @default(autoincrement())
-  postId Int @unique
-  post Post @relation(fields: [postId], references: [id])
-  kitName String
-  grade String
-  difficulty Int?
+  id             Int      @id @default(autoincrement())
+  postId         Int      @unique
+  post           Post     @relation(fields: [postId], references: [id])
+  kitName        String
+  grade          String
+  difficulty     Int?
   customizations String?
-  createdAt DateTime @default(now())
+  createdAt      DateTime @default(now())
 }

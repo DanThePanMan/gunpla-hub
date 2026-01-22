@@ -37,6 +37,7 @@
                                         to do so, delete all the components except for jwt context and start form there
 
 
+- put front end in vercel
 
 -migrate to railway because koyeb sucks (done)
 - fix isauthor
